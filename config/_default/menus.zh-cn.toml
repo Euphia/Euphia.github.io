@@ -11,20 +11,21 @@
 # ordered by weight from lowest to highest.
 
 [[main]]
-  name = "Blog"
+  name = "博客"
   pageRef = "posts"
   weight = 10
+
 
 # -- Footer Menu --
 # The footer menu is displayed at the bottom of the page, just before
 # the copyright notice. Configure as per the main menu above.
 
  [[footer]]
-   name = "Tags"
+   name = "标签"
    pageRef = "tags"
    weight = 10
 
 #  [[footer]]
-#    name = "Authors"
+#    name = "作者"
 #    pageRef = "authors"
 #    weight = 20
