@@ -22,10 +22,12 @@ Curbing takes place at levels 1, 2, and 3.
 - On level 1 the vocal folds make the vibratory pattern.
 - On level 2 the ventricular folds make a **distinct** narrowing from the sides to the middle.
 - On level 3 the arytenoid cartilages, cuneiform, epiglottis, and aryepiglottic folds create a **moderate** narrowing from the front and the back.
+- On level 3 the laryngeal tilt takes place (the thyroid cartilage tilts forward to stretch the vocal folds, while the other laryngeal gestures for the mode is maintained).
   
 - 在第一层次，声带形成振动波。
 - 在第二层次，室带从两侧向中间**明显**收拢，彼此距离**大幅度**变窄。
 - 在第三层次，杓状软骨、楔形软骨、会厌和杓状会厌襞褶皱从前方和后方**中等幅度**收窄。
+- 在第三层次，整个喉部向前倾斜，（甲状软骨向前倾斜拉伸声带，而该模式下其他典型的喉部动作保持不变。）
 
 ### Overdrive
 Overdrive takes place at levels 1, 2, and 3.
