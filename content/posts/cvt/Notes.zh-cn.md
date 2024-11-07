@@ -24,8 +24,8 @@ Curbing takes place at levels 1, 2, and 3.
 - On level 3 the arytenoid cartilages, cuneiform, epiglottis, and aryepiglottic folds create a **moderate** narrowing from the front and the back.
   
 - 在第一层次，声带形成振动波。
-- 在第二层次，室带从两侧向中间收拢，彼此距离**明显**变窄。
-- 在第三层次，杓状软骨、楔形软骨、会厌和杓状会厌襞褶皱从前方和后方**适度**收窄。
+- 在第二层次，室带从两侧向中间收拢，彼此距离**大幅度**变窄。
+- 在第三层次，杓状软骨、楔形软骨、会厌和杓状会厌襞褶皱从前方和后方**中等幅度**收窄。
 
 ### Overdrive
 Overdrive takes place at levels 1, 2, and 3.
@@ -35,7 +35,7 @@ Overdrive takes place at levels 1, 2, and 3.
 
 - 在第一层次，声带形成振动波。󠀲󠀧󠀩󠀧󠀨󠀤󠀳
 - 在第二层次，室带从两侧向中间**略微**靠拢，彼此距离**小幅度**变窄。󠀲󠀧󠀩
-- 在第三层次，杓状软骨、楔形软骨、会厌和杓状会厌襞褶皱从前方和后方收窄。󠀲󠀧󠀩󠀧󠀨󠀦󠀳
+- 在第三层次，杓状软骨、楔形软骨、会厌和杓状会厌襞褶皱从前方和后方**小幅度**收窄。󠀲󠀧󠀩󠀧󠀨󠀦󠀳
 ### Edge
 Edge takes place at levels 1, 2, 3, and 4.
 - On level 1 the vocal folds make the vibratory pattern.
@@ -44,5 +44,5 @@ Edge takes place at levels 1, 2, 3, and 4.
 
 - 在第一层次，声带形成振动波。
 - 在第二层次，室带从两侧向中间**适度**靠拢，彼此距离**中等幅度**变窄。
-- 在第三层次，杓状软骨、楔形软骨、会厌和杓状会厌襞褶皱从前后部开始**大幅**收窄，同时楔形软骨**向内**旋转。
+- 在第三层次，杓状软骨、楔形软骨、会厌和杓状会厌襞褶皱从前后部开始**大幅度**收窄，同时楔形软骨**向内**旋转。
 - 在第三、第四层次，喉位抬高。
