@@ -37,7 +37,7 @@ Overdrive takes place at levels 1, 2, and 3.
 
 - 在第一层次，声带形成振动波。󠀲󠀧󠀩󠀧󠀨󠀤󠀳
 - 在第二层次，室带从两侧向中间**略微**收拢，彼此距离**小幅度**变窄。󠀲
-- 在第三层次，杓状软骨、楔形软骨、会厌和杓状会厌襞褶皱从前方和后方**小幅度**收窄。󠀲󠀧󠀩󠀧󠀨󠀦󠀳
+- 在第三层次，杓状软骨、楔形软骨、会厌和杓状会厌襞褶皱从前方和后方收窄。󠀲󠀧󠀩󠀧󠀨󠀦󠀳
 
 ### Edge
 Edge takes place at levels 1, 2, 3, and 4.
@@ -90,7 +90,7 @@ In other words, Curbing has a **medium to high** contact quotient as measured by
 
 In other words, Overdrive has a high contact quotient as measured by EGG with a highly left-skewed waveform with a roll-off showing a pronounced ‘knee’ or bump.
 
-换句话说，根据电声门图（EGG）测量Overdrive 模式的关闭商数为**高**，波形**高度左倾**，滚降处有一个**明显**的 “拐点” 或凸起。
+换句话说，根据电声门图（EGG）测量 Overdrive 模式的关闭商数为**高**，波形**高度左倾**，滚降处有一个**明显**的 “拐点” 或凸起。
 
 ### Edge
 In other words, Edge has a high contact quotient as measured by EGG with a highly left-skewed waveform with the widest roll-off.
