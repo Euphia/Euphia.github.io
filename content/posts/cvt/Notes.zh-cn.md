@@ -76,7 +76,7 @@ In the pulsation, the vocal folds come together very quickly, stay together for 
 
 ## EGG 电声门图
 ### Neutral
-In other words, Neutral has a **low to medium-high** contact quotient as measured by EGG with an often symmetrical or ‘bell-shaped’ waveform.
+In other words, Neutral has a **low to medium-high** contact quotient as measured by EGG with an often symmetrical or "bell-shaped" waveform.
 
 换句话说，根据电声门图（EGG）测量，Neutral 模式的关闭商数为**低至中高**，波形通常呈**对称**或 "钟形"。
 
@@ -88,9 +88,9 @@ In other words, Curbing has a **medium to high** contact quotient as measured by
 
 ### Overdrive
 
-In other words, Overdrive has a high contact quotient as measured by EGG with a highly left-skewed waveform with a roll-off showing a pronounced ‘knee’ or bump.
+In other words, Overdrive has a high contact quotient as measured by EGG with a highly left-skewed waveform with a roll-off showing a pronounced "knee" or bump.
 
-换句话说，根据电声门图（EGG）测量 Overdrive 模式的关闭商数为**高**，波形**高度左倾**，滚降处有一个**明显**的 “拐点” 或凸起。
+换句话说，根据电声门图（EGG）测量 Overdrive 模式的关闭商数为**高**，波形**高度左倾**，滚降处有一个**明显**的 "拐点" 或凸起。
 
 ### Edge
 In other words, Edge has a high contact quotient as measured by EGG with a highly left-skewed waveform with the widest roll-off.
