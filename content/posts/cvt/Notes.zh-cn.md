@@ -70,7 +70,7 @@ In the pulsation, the vocal folds come together **very quickly**, stay together 
 ### Edge
 In the pulsation, the vocal folds come together very quickly, stay together for longer, and separate slowly before starting a new pulsation.
 
-在一个声门周期中，声带极快地靠拢，关闭相持续时间比 Curbing 模式更长，并在下个声门周期前慢慢地分离。
+在一个声门周期中，声带**极快**地靠拢，关闭相持续时间比 Curbing 模式**更长**，并在下个声门周期前**慢慢地**分离。
 
 ### Neutral with air
 
