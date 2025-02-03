@@ -1,0 +1,13 @@
+@media print {
+  #menu-blur,
+  .main-menu,
+  #hero,
+  .min-h-\[148px\],
+  .flex.author,
+  .article-content + h2,
+  .article-content + h2 + section,
+  footer
+  {
+    display: none;
+  }   
+}
