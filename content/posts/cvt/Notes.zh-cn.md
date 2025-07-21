@@ -108,7 +108,7 @@ Neutral is often seen on an acoustic spectrum with the first harmonic peak being
 
 Curbing is often seen on an acoustic spectrum with the first harmonic peak being the **highest** of the peaks with only **slightly increased** harmonic energy and harmonic structure in the higher frequencies.
 
-在声学频谱上，Curbing 模式往往表现为**第一谐波峰**峰值**最高**，而更高频率的谐波能量和结构仅比 Neutral 模式**略有增加**。
+在声学频谱上，Curbing 模式常表现为**第一谐波峰**峰值**最高**，而更高频率的谐波能量和结构仅比 Neutral 模式**略有增加**。
 
 
 ### Overdrive
