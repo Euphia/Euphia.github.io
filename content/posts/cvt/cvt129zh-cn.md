@@ -1,6 +1,7 @@
 ---
 title: "129 Highway 的黄金练习 Golden Exercises in Highway  CVT 完全声乐技术中文翻译"
 description: "Learn about some of my projects."
+draft: true
 cascade:
   showReadingTime: true
 ---
