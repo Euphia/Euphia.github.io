@@ -1,0 +1,143 @@
+{{/*
+  Usage:
+
+  {{< voxart "NoE++br" "test" />}}
+  {{< voxart "lt" />}}
+  {{< voxart "NoE" "test" />}}
+  {{< voxart "E" "test" />}}
+  {{< voxart "NoE+2" "test" />}}
+  {{< voxart "NoE-2" "test" />}}
+*/}}
+
+{{- $markup := lower (default "" (or (.Get 0) (.Get "markup"))) -}}
+{{- $content := trim (default "" (or (.Get 1) (.Get "content") .Inner)) " \n\r\t" -}}
+{{- $content = .Page.RenderString (dict "display" "inline") $content -}}
+
+{{- $mode := "" -}}
+{{- $onset := "" -}}
+{{- $throat := "" -}}
+{{- $breath := false -}}
+{{- $density := "" -}}
+{{- $support := "" -}}
+{{- $twangSign := "+" -}}
+{{- $twangValue := 0 -}}
+
+{{/* Parse extra flags first and strip them from the remaining text */}}
+{{- $rest := trim $markup " \n\r\t" -}}
+
+{{- if findRE "(?i)fd" $rest -}}
+  {{- $density = "fd" -}}
+  {{- $rest = replaceRE "(?i)fd" "" $rest -}}
+{{- else if findRE "(?i)rd" $rest -}}
+  {{- $density = "rd" -}}
+  {{- $rest = replaceRE "(?i)rd" "" $rest -}}
+{{- end -}}
+
+{{- if findRE "(?i)ns" $rest -}}
+  {{- $support = "ns" -}}
+  {{- $rest = replaceRE "(?i)ns" "" $rest -}}
+{{- end -}}
+
+{{- if findRE "(?i)br" $rest -}}
+  {{- $breath = true -}}
+  {{- $rest = replaceRE "(?i)br" "" $rest -}}
+{{- end -}}
+
+{{- if findRE "(?i)(lt|mt|ht|low|mid|high)" $rest -}}
+  {{- $throat = lower (index (findRE "(?i)(lt|mt|ht|low|mid|high)" $rest) 0) -}}
+  {{- if eq $throat "lt" -}}
+    {{- $throat = "low" -}}
+  {{- else if eq $throat "mt" -}}
+    {{- $throat = "mid" -}}
+  {{- else if eq $throat "ht" -}}
+    {{- $throat = "high" -}}
+  {{- end -}}
+  {{- $rest = replaceRE "(?i)(lt|mt|ht|low|mid|high)" "" $rest -}}
+{{- end -}}
+
+{{- if findRE "(?i)([+-]+|[+-]\\d+)" $rest -}}
+  {{- $twangToken := index (findRE "(?i)([+-]+|[+-]\\d+)" $rest) 0 -}}
+  {{- $twangSign = "+" -}}
+  {{- if hasPrefix $twangToken "-" -}}
+    {{- $twangSign = "-" -}}
+  {{- end -}}
+  {{- if findRE "(?i)[+-]\\d+" $twangToken -}}
+    {{- $twangValue = int (replaceRE "(?i)[^\\d]" "" $twangToken) -}}
+  {{- else -}}
+    {{- $twangValue = len $twangToken -}}
+  {{- end -}}
+  {{- $rest = replaceRE "(?i)([+-]+|[+-]\\d+)" "" $rest -}}
+{{- end -}}
+
+{{- $rest = trim $rest " \n\r\t" -}}
+
+{{/* Now parse the remaining compact mode/onset block */}}
+{{- if eq $rest "f" -}}
+  {{- $mode = "f" -}}
+{{- else if findRE "(?i)^(.*)o([nceo])$" $rest -}}
+  {{- $mode = lower (replaceRE "(?i)^(.*)o[nceo]$" "$1" $rest) -}}
+  {{- $onset = lower (replaceRE "(?i)^.*o([nceo])$" "$1" $rest) -}}
+{{- else if ne $rest "" -}}
+  {{- $mode = lower $rest -}}
+{{- end -}}
+
+{{- if eq $mode "" -}}
+  {{- $mode = "n" -}}
+{{- end -}}
+
+{{- if eq $onset "n" -}}
+  {{- $onset = "" -}}
+{{- end -}}
+
+{{/* Normalize values for final render */}}
+{{- $onsetMap := dict "c" "√" "e" ">" "o" "≥" -}}
+{{- $onsetMarkup := "" -}}
+{{- if ne $onset "" -}}
+  {{- $onsetMarkup = printf "<strong>%s</strong>" (index $onsetMap $onset | default $onset) -}}
+{{- end -}}
+
+{{- $throatMap := dict "low" "<sub><s><strong>∇</strong></s></sub>" "mid" "<s><strong>∇</strong></s>" "high" "<sup><s><strong>∇</strong></s></sup>" -}}
+{{- $throatMarkup := "" -}}
+{{- if ne $throat "" -}}
+  {{- $throatMarkup = index $throatMap $throat | default $throat -}}
+{{- end -}}
+
+{{- $breathMarkup := "" -}}
+{{- if $breath -}}
+  {{- $breathMarkup = "<sup>V</sup>" -}}
+{{- end -}}
+
+{{- $rendered := $content -}}
+{{- if eq $mode "e" -}}
+  {{- $rendered = printf "<em>%s</em>" $content -}}
+{{- else if eq $mode "o" -}}
+  {{- $rendered = printf "<u>%s</u>" $content -}}
+{{- else if eq $mode "f" -}}
+  {{- $rendered = printf "<span class=\"voxart-falsetto\">≠%s</span>" $content -}}
+{{- else if eq $mode "nwa" -}}
+  {{- $rendered = printf "<span class=\"voxart-nwa\"><sup>º</sup>%s</span>" $content -}}
+{{- else if eq $mode "nwoa" -}}
+  {{- $rendered = printf "<span class=\"voxart-nwoa\"><sup>ø</sup>%s</span>" $content -}}
+{{- else if eq $mode "n" -}}
+  {{- $rendered = $content -}}
+{{- end -}}
+
+{{- if eq $density "fd" -}}
+  {{- $rendered = printf "<strong>%s</strong>" $rendered -}}
+{{- else if eq $density "rd" -}}
+  {{- $rendered = printf "<span class=\"voxart-reduced\">%s</span>" $rendered -}}
+{{- end -}}
+
+{{- if eq $support "ns" -}}
+  {{- $rendered = printf "<s>%s</s>" $rendered -}}
+{{- end -}}
+
+{{- $inner := printf "%s%s%s" $throatMarkup $onsetMarkup $rendered -}}
+{{- if gt $twangValue 0 -}}
+  {{- $twangString := printf "<sup><strong>%s%d∆</strong></sup>" $twangSign $twangValue -}}
+  {{- $inner = printf "%s%s%s" $twangString $inner $twangString -}}
+{{- end -}}
+
+{{- $inner = printf "%s%s" $breathMarkup $inner -}}
+
+{{- printf "%s" $inner | safeHTML -}}
