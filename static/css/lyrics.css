@@ -1,0 +1,7 @@
+.article-content table tbody tr {
+  height: 1.rem;
+}
+
+.article-content table tbody td:empty::before {
+  content: "\00a0";
+}
