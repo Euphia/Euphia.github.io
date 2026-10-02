@@ -10,7 +10,7 @@
 */}}
 
 {{- $markup := lower (default "" (or (.Get 0) (.Get "markup"))) -}}
-{{- $content := trim (default "" (or (.Get 1) (.Get "content") .Inner)) " \n\r\t_" -}}
+{{- $content := trim (default "" (or (.Get 1) (.Get "content") .Inner)) " \n\r\t" -}}
 {{- $content = .Page.RenderString (dict "display" "inline") $content -}}
 
 {{- $mode := "" -}}
@@ -62,7 +62,7 @@
   {{- $rest = replaceRE "(?i)([+-]+|[+-]\\d+)" "" $rest -}}
 {{- end -}}
 
-{{- $rest = trim $rest " \n\r\t" -}}
+{{- $rest = trim $rest " \n\r\t_" -}}
 
 {{/* Now parse the remaining compact mode/onset block */}}
 {{- if eq $rest "f" -}}
@@ -133,7 +133,7 @@
 {{- $inner := printf "%s%s%s%s%s" $tongueMarkup $outerOnsetMarkup $breathMarkup $innerOnsetMarkup $rendered -}}
 {{- if gt $twangValue 0 -}}
   {{- $twangString := printf "<sup><strong>%s%d∆</strong></sup>" $twangSign $twangValue -}}
-  {{- $inner = printf "%s%s%s" $twangString $inner $twangString -}}
+  {{- $inner = printf "%s%s" $twangString $inner -}}
 {{- end -}}
 
 {{- printf "%s" $inner | safeHTML -}}
