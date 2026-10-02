@@ -10,7 +10,7 @@
 */}}
 
 {{- $markup := lower (default "" (or (.Get 0) (.Get "markup"))) -}}
-{{- $content := trim (default "" (or (.Get 1) (.Get "content") .Inner)) " \n\r\t" -}}
+{{- $content := trim (default "" (or (.Get 1) (.Get "content") .Inner)) " \n\r\t_" -}}
 {{- $content = .Page.RenderString (dict "display" "inline") $content -}}
 
 {{- $mode := "" -}}
