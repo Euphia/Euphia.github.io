@@ -74,9 +74,9 @@
 {{/* Now parse the remaining compact mode/onset block */}}
 {{- if eq $rest "f" -}}
   {{- $mode = "f" -}}
-{{- else if findRE "(?i)^(.*)o([nceo])$" $rest -}}
-  {{- $mode = lower (replaceRE "(?i)^(.*)o[nceo]$" "$1" $rest) -}}
-  {{- $onset = lower (replaceRE "(?i)^.*o([nceo])$" "$1" $rest) -}}
+{{- else if findRE "(?i)^(.*)o([nceoa])$" $rest -}}
+  {{- $mode = lower (replaceRE "(?i)^(.*)o[nceoa]$" "$1" $rest) -}}
+  {{- $onset = lower (replaceRE "(?i)^.*o([nceoa])$" "$1" $rest) -}}
 {{- else if ne $rest "" -}}
   {{- $mode = lower $rest -}}
 {{- end -}}
@@ -91,9 +91,16 @@
 
 {{/* Normalize values for final render */}}
 {{- $onsetMap := dict "c" "√" "e" ">" "o" "≥" -}}
-{{- $onsetMarkup := "" -}}
+{{- $innerOnsetMarkup := "" -}}
+{{- $outerOnsetMarkup := "" -}}
 {{- if ne $onset "" -}}
-  {{- $onsetMarkup = printf "<strong>%s</strong>" (index $onsetMap $onset | default $onset) -}}
+  {{- if eq $onset "a" -}}
+    {{- $innerOnsetMarkup = "<sup>ø</sup>" -}}
+  {{- else if eq $onset "c" -}}
+    {{- $innerOnsetMarkup = printf "<strong>%s</strong>" (index $onsetMap $onset) -}}
+  {{- else -}}
+    {{- $outerOnsetMarkup = printf "<strong>%s</strong>" (index $onsetMap $onset | default $onset) -}}
+  {{- end -}}
 {{- end -}}
 
 {{- $throatMap := dict "low" "<sub><s><strong>∇</strong></s></sub>" "mid" "<s><strong>∇</strong></s>" "high" "<sup><s><strong>∇</strong></s></sup>" -}}
@@ -116,8 +123,6 @@
   {{- $rendered = printf "<span class=\"voxart-falsetto\">≠%s</span>" $content -}}
 {{- else if eq $mode "nwa" -}}
   {{- $rendered = printf "<span class=\"voxart-nwa\"><sup>º</sup>%s</span>" $content -}}
-{{- else if eq $mode "nwoa" -}}
-  {{- $rendered = printf "<span class=\"voxart-nwoa\"><sup>ø</sup>%s</span>" $content -}}
 {{- else if eq $mode "n" -}}
   {{- $rendered = $content -}}
 {{- end -}}
@@ -132,12 +137,10 @@
   {{- $rendered = printf "<s>%s</s>" $rendered -}}
 {{- end -}}
 
-{{- $inner := printf "%s%s%s" $throatMarkup $onsetMarkup $rendered -}}
+{{- $inner := printf "%s%s%s%s%s" $throatMarkup $outerOnsetMarkup $breathMarkup $innerOnsetMarkup $rendered -}}
 {{- if gt $twangValue 0 -}}
   {{- $twangString := printf "<sup><strong>%s%d∆</strong></sup>" $twangSign $twangValue -}}
   {{- $inner = printf "%s%s%s" $twangString $inner $twangString -}}
 {{- end -}}
-
-{{- $inner = printf "%s%s" $breathMarkup $inner -}}
 
 {{- printf "%s" $inner | safeHTML -}}
