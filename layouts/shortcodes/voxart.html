@@ -15,7 +15,7 @@
 
 {{- $mode := "" -}}
 {{- $onset := "" -}}
-{{- $throat := "" -}}
+{{- $tongue := "" -}}
 {{- $breath := false -}}
 {{- $density := "" -}}
 {{- $support := "" -}}
@@ -43,16 +43,9 @@
   {{- $rest = replaceRE "(?i)br" "" $rest -}}
 {{- end -}}
 
-{{- if findRE "(?i)(lt|mt|ht|low|mid|high)" $rest -}}
-  {{- $throat = lower (index (findRE "(?i)(lt|mt|ht|low|mid|high)" $rest) 0) -}}
-  {{- if eq $throat "lt" -}}
-    {{- $throat = "low" -}}
-  {{- else if eq $throat "mt" -}}
-    {{- $throat = "mid" -}}
-  {{- else if eq $throat "ht" -}}
-    {{- $throat = "high" -}}
-  {{- end -}}
-  {{- $rest = replaceRE "(?i)(lt|mt|ht|low|mid|high)" "" $rest -}}
+{{- if findRE "(?i)(fht|fmt|flt|cht|cmt|clt|bht|bmt|blt)" $rest -}}
+  {{- $tongue = lower (index (findRE "(?i)(fht|fmt|flt|cht|cmt|clt|bht|bmt|blt)" $rest) 0) -}}
+  {{- $rest = replaceRE "(?i)(fht|fmt|flt|cht|cmt|clt|bht|bmt|blt)" "" $rest -}}
 {{- end -}}
 
 {{- if findRE "(?i)([+-]+|[+-]\\d+)" $rest -}}
@@ -103,10 +96,10 @@
   {{- end -}}
 {{- end -}}
 
-{{- $throatMap := dict "low" "<sub><s><strong>∇</strong></s></sub>" "mid" "<s><strong>∇</strong></s>" "high" "<sup><s><strong>∇</strong></s></sup>" -}}
-{{- $throatMarkup := "" -}}
-{{- if ne $throat "" -}}
-  {{- $throatMarkup = index $throatMap $throat | default $throat -}}
+{{- $tongueMap := dict "fht" "↖" "fmt" "←" "flt" "↙" "cht" "↑" "cmt" "⊙" "clt" "↓" "bht" "↗" "bmt" "→" "blt" "↘" -}}
+{{- $tongueMarkup := "" -}}
+{{- if ne $tongue "" -}}
+  {{- $tongueMarkup = printf "<strong>%s</strong>" (index $tongueMap $tongue) -}}
 {{- end -}}
 
 {{- $breathMarkup := "" -}}
@@ -137,7 +130,7 @@
   {{- $rendered = printf "<s>%s</s>" $rendered -}}
 {{- end -}}
 
-{{- $inner := printf "%s%s%s%s%s" $throatMarkup $outerOnsetMarkup $breathMarkup $innerOnsetMarkup $rendered -}}
+{{- $inner := printf "%s%s%s%s%s" $tongueMarkup $outerOnsetMarkup $breathMarkup $innerOnsetMarkup $rendered -}}
 {{- if gt $twangValue 0 -}}
   {{- $twangString := printf "<sup><strong>%s%d∆</strong></sup>" $twangSign $twangValue -}}
   {{- $inner = printf "%s%s%s" $twangString $inner $twangString -}}
